@@ -3,15 +3,15 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up (queryInterface, Sequelize) {
-    await queryInterface.createTable('refresh_token', {
+    await queryInterface.createTable('my_course', {
       id: {
         type: Sequelize.BIGINT,
         autoIncrement: true,
         primaryKey: true,
         allowNull: false
       },
-      token: {
-        type: Sequelize.TEXT('long'),
+      course_id: {
+        type: Sequelize.BIGINT,
         allowNull: false
       },
       user_id: {
@@ -27,18 +27,25 @@ module.exports = {
         allowNull: false
       }
     });
-    await queryInterface.addConstraint('refresh_token', {
+    await queryInterface.addConstraint('my_course', {
       type: 'foreign key',
-      name: 'refresh_token_user_id',
-      fields: ['user_id'],
+      name: 'my_course_id',
+      fields: ['course_id'],
       references: {
-        table: 'user',
+        table: 'course',
         field: 'id'
-      }
+      },
+      onDelete: 'CASCADE'
     })
+
+    await queryInterface.addConstraint('my_course', {
+      type: 'unique',
+      name: 'unique_my_course_user',
+      fields: ['course_id', 'user_id']
+    });
   },
 
   async down (queryInterface, Sequelize) {
-    await queryInterface.dropTable('refresh_token');
+    await queryInterface.dropTable('my_course');
   }
 };

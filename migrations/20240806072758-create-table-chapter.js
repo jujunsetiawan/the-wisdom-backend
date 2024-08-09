@@ -3,18 +3,18 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up (queryInterface, Sequelize) {
-    await queryInterface.createTable('refresh_token', {
+    await queryInterface.createTable('chapter', {
       id: {
         type: Sequelize.BIGINT,
         autoIncrement: true,
         primaryKey: true,
         allowNull: false
       },
-      token: {
-        type: Sequelize.TEXT('long'),
+      name: {
+        type: Sequelize.STRING,
         allowNull: false
       },
-      user_id: {
+      course_id: {
         type: Sequelize.BIGINT,
         allowNull: false
       },
@@ -27,18 +27,19 @@ module.exports = {
         allowNull: false
       }
     });
-    await queryInterface.addConstraint('refresh_token', {
+    await queryInterface.addConstraint('chapter', {
       type: 'foreign key',
-      name: 'refresh_token_user_id',
-      fields: ['user_id'],
+      name: 'chapter_course_id',
+      fields: ['course_id'],
       references: {
-        table: 'user',
+        table: 'course',
         field: 'id'
-      }
+      },
+      onDelete: 'CASCADE'
     })
   },
 
   async down (queryInterface, Sequelize) {
-    await queryInterface.dropTable('refresh_token');
+     await queryInterface.dropTable('chapter')
   }
 };

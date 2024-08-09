@@ -1,12 +1,16 @@
 module.exports = (sequelize, DataTypes) => {
     const Mentor = sequelize.define('Mentor', {
         id: {
-            type: DataTypes.INTEGER,
+            type: DataTypes.BIGINT,
             primaryKey: true,
             autoIncrement: true,
             allowNull: false
         },
         name: {
+            type: DataTypes.STRING,
+            allowNull: false
+        },
+        email: {
             type: DataTypes.STRING,
             allowNull: false
         },

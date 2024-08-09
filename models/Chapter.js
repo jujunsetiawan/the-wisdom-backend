@@ -1,16 +1,16 @@
 module.exports = (sequelize, DataTypes) => {
-    const Refreshtoken = sequelize.define('Refreshtoken', {
+    const Chapter = sequelize.define('Chapter', {
         id: {
             type: DataTypes.BIGINT,
             primaryKey: true,
             autoIncrement: true,
             allowNull: false
         },
-        token: {
-            type: DataTypes.TEXT('long'),
+        name: {
+            type: DataTypes.STRING,
             allowNull: false
         },
-        user_id: {
+        course_id: {
             type: DataTypes.BIGINT,
             allowNull: false
         },
@@ -25,9 +25,9 @@ module.exports = (sequelize, DataTypes) => {
             allowNull: false
         }
     }, {
-        tableName: 'refresh_token',
+        tableName: 'chapter',
         timestamps: true
-    });
+    })
 
-    return Refreshtoken;
+    return Chapter
 }

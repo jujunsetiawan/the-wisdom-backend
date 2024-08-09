@@ -5,12 +5,16 @@ module.exports = {
   async up (queryInterface, Sequelize) {
      await queryInterface.createTable('mentor', {
       id: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.BIGINT,
         autoIncrement: true,
         primaryKey: true,
         allowNull: false
       },
       name: {
+        type: Sequelize.STRING,
+        allowNull: false
+      },
+      email: {
         type: Sequelize.STRING,
         allowNull: false
       },

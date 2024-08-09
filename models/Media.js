@@ -1,7 +1,7 @@
 module.exports = (sequelize, DataTypes) => {
     const Media = sequelize.define('Media', {
         id: {
-            type: DataTypes.INTEGER,
+            type: DataTypes.BIGINT,
             primaryKey: true,
             autoIncrement: true,
             allowNull: false
@@ -25,7 +25,8 @@ module.exports = (sequelize, DataTypes) => {
             allowNull: false
         }
     }, {
-        tableName: 'media'
+        tableName: 'media',
+        timestamps: true
     });
 
     return Media;

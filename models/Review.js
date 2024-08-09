@@ -1,18 +1,27 @@
 module.exports = (sequelize, DataTypes) => {
-    const Refreshtoken = sequelize.define('Refreshtoken', {
+    const Review = sequelize.define('Review', {
         id: {
             type: DataTypes.BIGINT,
             primaryKey: true,
             autoIncrement: true,
             allowNull: false
         },
-        token: {
-            type: DataTypes.TEXT('long'),
-            allowNull: false
-        },
         user_id: {
             type: DataTypes.BIGINT,
             allowNull: false
+        },
+        course_id: {
+            type: DataTypes.BIGINT,
+            allowNull: false
+        },
+        ratting: {
+            type: DataTypes.TINYINT,
+            defaultValue: 1,
+            allowNull: false
+        },
+        note: {
+            type: DataTypes.TEXT('long'),
+            allowNull: true
         },
         createdAt: {
             field: 'created_at',
@@ -25,9 +34,9 @@ module.exports = (sequelize, DataTypes) => {
             allowNull: false
         }
     }, {
-        tableName: 'refresh_token',
+        tableName: 'review',
         timestamps: true
-    });
+    })
 
-    return Refreshtoken;
+    return Review
 }

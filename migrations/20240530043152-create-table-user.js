@@ -5,7 +5,7 @@ module.exports = {
   async up (queryInterface, Sequelize) {
      await queryInterface.createTable('user', {
       id: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.BIGINT,
         autoIncrement: true,
         primaryKey: true,
         allowNull: false
@@ -47,7 +47,7 @@ module.exports = {
     await queryInterface.addConstraint('user', {
       type: 'unique',
       fields: ['email'],
-      name: 'EMAIL'
+      name: 'user_email'
     })
   },
 
