@@ -14,6 +14,7 @@ const mediaRouter = require('./routes/media');
 const userRouter = require('./routes/user');
 const refreshtokenRouter = require('./routes/refreshtoken')
 const mentorRouter = require('./routes/mentor')
+const courseRouter = require('./routes/course')
 
 const notFoundMiddleware = require('./middleware/not-found')
 const handleErrorMiddleware = require('./middleware/handle-error');
@@ -29,6 +30,7 @@ app.use(`${v1}/media`, mediaRouter);
 app.use(`${v1}/user`, userRouter);
 app.use(`${v1}/refreshtoken`, refreshtokenRouter);
 app.use(`${v1}/mentor`, mentorRouter);
+app.use(`${v1}/course`, courseRouter);
 
 app.use(notFoundMiddleware)
 app.use(handleErrorMiddleware)
