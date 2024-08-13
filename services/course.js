@@ -79,7 +79,7 @@ const updateCourse = async(req) => {
 }
 
 const deleteCourse = async(req) => {
-    const course = await Mentor.findByPk(req.params.id)
+    const course = await Course.findByPk(req.params.id)
     if(!course) throw new NotFoundError('course not found')
 
     await course.destroy()
