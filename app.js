@@ -18,6 +18,8 @@ const courseRouter = require('./routes/course')
 const chapterRouter = require('./routes/chapter')
 const lessonRouter = require('./routes/lesson')
 const imageCourseRouter = require('./routes/imageCourse')
+const myCourseRouter = require('./routes/myCourse')
+const reviewRouter = require('./routes/review')
 
 const notFoundMiddleware = require('./middleware/not-found')
 const handleErrorMiddleware = require('./middleware/handle-error');
@@ -37,6 +39,8 @@ app.use(`${v1}/course`, courseRouter);
 app.use(`${v1}/chapter`, chapterRouter);
 app.use(`${v1}/lesson`, lessonRouter);
 app.use(`${v1}/imagecourse`, imageCourseRouter);
+app.use(`${v1}/mycourse`, myCourseRouter);
+app.use(`${v1}/review`, reviewRouter);
 
 app.use(notFoundMiddleware)
 app.use(handleErrorMiddleware)
