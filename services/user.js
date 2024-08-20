@@ -1,4 +1,4 @@
-const { User, Refreshtoken } = require('../models')
+const { User } = require('../models')
 const bcrypt = require('bcryptjs')
 const Validator = require('fastest-validator')
 const { BadRequestError, NotFoundError, UnauthorizedError } = require('../errors')
