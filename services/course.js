@@ -1,4 +1,4 @@
-const {Mentor, Course} = require('../models')
+const {Mentor, Course, Review, MyCourse, Chapter, Lesson, User} = require('../models')
 const Validator = require('fastest-validator')
 const {BadRequestError, NotFoundError} = require('../errors')
 const { Op } = require('sequelize')
@@ -46,7 +46,15 @@ const getAllCourse = async(req) => {
 }
 
 const getOneCourse = async(req) => {
+    const result = await Course.findOne({where: {id: req.params.id}, include: [{model: Chapter, as: 'chapter', include: [{model: Lesson, as: 'lesson'}]}, {model: Review, as: 'review', include: [{model: User, as: 'user', attributes: ['id', 'name', 'email', 'role', 'profession', 'avatar']}]}, {model: Mentor, as: 'mentor'}]})
+    if(!result) throw new NotFoundError('course not found')
 
+    const total_video = result.chapter.map(v => v.lesson.length).reduce((a, c) => a + c, 0)
+    const total_student = await MyCourse.count({where: {course_id: req.params.id}})
+
+    result.dataValues['total_video'] = total_video
+    result.dataValues['total_student'] = total_student
+    return result
 }
 
 const updateCourse = async(req) => {

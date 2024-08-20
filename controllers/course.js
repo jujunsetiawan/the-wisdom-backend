@@ -1,4 +1,4 @@
-const {createCourse, updateCourse, getAllCourse, deleteCourse} = require('../services/course')
+const {createCourse, updateCourse, getAllCourse, deleteCourse, getOneCourse} = require('../services/course')
 const {StatusCodes} = require('http-status-codes')
 
 const create = async(req, res, next) => {
@@ -21,7 +21,8 @@ const index = async(req, res, next) => {
 
 const find = async(req, res, next) => {
     try {
-        
+        const result = await getOneCourse(req)
+        res.status(StatusCodes.OK).json({status: 'success', course: result})
     } catch (error) {
         next(error)
     }

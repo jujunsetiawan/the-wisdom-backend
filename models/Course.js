@@ -58,5 +58,12 @@ module.exports = (sequelize, DataTypes) => {
         timestamps: true
     });
 
+    Course.associate = (models) => {
+        Course.belongsTo(models.Mentor, {foreignKey: 'mentor_id', as: 'mentor'});
+        Course.hasMany(models.Chapter, {foreignKey: 'course_id', as: 'chapter'})
+        Course.hasMany(models.ImageCourse, {foreignKey: 'course_id', as: 'image'})
+        Course.hasMany(models.Review, {foreignKey: 'course_id', as: 'review'})
+    };
+
     return Course;
 }

@@ -33,13 +33,7 @@ const getAllMyCourse = async(req) => {
 
     if(user_id) condition['user_id'] = user_id
 
-    const myCourses = await MyCourse.findAll({where: condition, include: [{model: Course}]})
-    const result = myCourses.map(myCourse => ({
-        ...myCourse.toJSON(),
-        course: myCourse.Course,
-        Course: undefined
-    }));
-
+    const result = await MyCourse.findAll({where: condition, include: [{model: Course, as: 'course'}]})
     return result
 }
 

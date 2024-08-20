@@ -29,5 +29,9 @@ module.exports = (sequelize, DataTypes) => {
         timestamps: true
     })
 
+    Chapter.associate = (models) => {
+        Chapter.hasMany(models.Lesson, { foreignKey: 'chapter_id', as: 'lesson' });  // Asosiasi hasMany
+    };
+
     return Chapter
 }
