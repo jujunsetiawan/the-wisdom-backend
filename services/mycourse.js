@@ -1,6 +1,7 @@
 const {MyCourse, Course, User} = require('../models')
 const Validator = require('fastest-validator')
 const {BadRequestError, NotFoundError} = require('../errors')
+const { createOrder } = require('./order')
 const v = new Validator()
 
 const createMyCourse = async(req) => {
@@ -22,6 +23,8 @@ const createMyCourse = async(req) => {
 
     const isExistMyCourse = await MyCourse.findOne({where: {course_id, user_id}})
     if(isExistMyCourse) throw new BadRequestError('user already taken this course')
+
+    if(course.type !== 'free') return await createOrder(course, user)
 
     const result = await MyCourse.create({course_id, user_id})
     return result
