@@ -1,15 +1,15 @@
 const multer = require('multer')
 
-const storage = multer.diskStorage({
-    destination: (req, file, cb) => {
-        cb(null, 'public/images/')
-    },
-    filename: (req, file, cb) => {
-        cb(null, Math.floor(Math.random() * 99999999) + '-' + file.originalname)
-    }
-})
+// const storage = multer.diskStorage({
+//     destination: (req, file, cb) => {
+//         cb(null, 'public/images/')
+//     },
+//     filename: (req, file, cb) => {
+//         cb(null, Math.floor(Math.random() * 99999999) + '-' + file.originalname)
+//     }
+// })
 
-// const storage = multer.memoryStorage()
+const storage = multer.memoryStorage()
 
 const fileFilter = (req, file, cb) => {
     if(['image/jpeg', 'image/jpg', 'image/png', 'image/webp'].includes(file.mimetype)) {

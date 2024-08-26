@@ -1,6 +1,6 @@
 require('dotenv').config()
 
-const {BASE_URL, DB_NAME, DB_USERNAME, DB_PASSWORD, DB_HOSTNAME, JWT_SECRET_KEY, JWT_REFRESH_SECRET_KEY, MIDTRANS_SERVER_KEY, MIDTRANS_PRODUCTION, MIDTRANS_3DS} = process.env
+const {BASE_URL, DB_NAME, DB_USERNAME, DB_PASSWORD, DB_HOSTNAME, JWT_SECRET_KEY, JWT_REFRESH_SECRET_KEY, MIDTRANS_SERVER_KEY, MIDTRANS_PRODUCTION, MIDTRANS_3DS, IMGBB_API_KEY} = process.env
 
 module.exports = {
   "development": {
@@ -14,7 +14,8 @@ module.exports = {
     "jwtRefreshSecret": JWT_REFRESH_SECRET_KEY,
     "midtransserverkey": MIDTRANS_SERVER_KEY,
     "midtransproduction": MIDTRANS_PRODUCTION,
-    "midtrans3ds": MIDTRANS_3DS
+    "midtrans3ds": MIDTRANS_3DS,
+    "imgbbapikey": IMGBB_API_KEY
   },
   "test": {
     "username": DB_USERNAME,
