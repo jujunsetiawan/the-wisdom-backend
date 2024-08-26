@@ -6,7 +6,7 @@ module.exports = {
   "development": {
     "base_url": BASE_URL,
     "username": DB_USERNAME,
-    "password": '',
+    "password": DB_PASSWORD,
     "database": DB_NAME,
     "host": DB_HOSTNAME,
     "dialect": "mysql",
@@ -25,10 +25,17 @@ module.exports = {
     "dialect": "mysql"
   },
   "production": {
+    "base_url": BASE_URL,
     "username": DB_USERNAME,
     "password": DB_PASSWORD,
     "database": DB_NAME,
     "host": DB_HOSTNAME,
-    "dialect": "mysql"
+    "dialect": "mysql",
+    "jwtsecret": JWT_SECRET_KEY,
+    "jwtRefreshSecret": JWT_REFRESH_SECRET_KEY,
+    "midtransserverkey": MIDTRANS_SERVER_KEY,
+    "midtransproduction": MIDTRANS_PRODUCTION,
+    "midtrans3ds": MIDTRANS_3DS,
+    "imgbbapikey": IMGBB_API_KEY
   }
 }
