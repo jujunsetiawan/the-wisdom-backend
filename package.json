@@ -3,8 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/index",
-    "dev": "nodemon ./bin/index",
+    "start": "node ./bin/index.js",
+    "dev": "nodemon ./bin/index.js",
     "migrate:up": "npx sequelize-cli db:migrate",
     "migrate:undo": "npx sequelize-cli db:migrate:undo",
     "migrate:undo:all": "npx sequelize db:migrate:undo:all",
