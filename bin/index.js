@@ -3,7 +3,7 @@
 /**
  * Module dependencies.
  */
-
+require('mysql2');
 var app = require('../app');
 var debug = require('debug')('the-wisdom-api:server');
 var http = require('http');
