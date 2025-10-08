@@ -6,6 +6,8 @@
     "start": "node ./bin/index.js",
     "dev": "nodemon ./bin/index.js",
     "test": "node test.js",
+    "docker:build": "docker build -t wisdom-backend .",
+    "docker:start": "docker run -p 3000:3000 wisdom-backend",
     "migrate:up": "npx sequelize-cli db:migrate",
     "migrate:undo": "npx sequelize-cli db:migrate:undo",
     "migrate:undo:all": "npx sequelize db:migrate:undo:all",
