@@ -1,5 +1,5 @@
 # set the base image to create the image for app
-FROM node:20-alpine
+FROM node:20-alpine AS base
 
 # create a user with permisson to run
 # -S --> create a system user
@@ -34,7 +34,7 @@ RUN chown -R app:app .
 USER app
 
 # install dependencies
-RUN npm install
+RUN npm ci --omit=dev
 
 # copy the rest of the files to the working directory
 COPY . .
@@ -42,5 +42,7 @@ COPY . .
 # expose port 5173 to tell Docker that the container listens on the specified network ports at runtime
 EXPOSE 3000
 
+ENV NODE_ENV=production
+
 # command to run the app
-CMD [ "npm", "run", "dev" ]
+CMD [ "npm", "start" ]
