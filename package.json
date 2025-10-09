@@ -3,11 +3,12 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/index.js",
-    "dev": "nodemon ./bin/index.js",
+    "start": "node ./bin/index.js --host",
+    "dev": "nodemon --legacy-watch ./bin/index.js --host",
     "test": "node test.js",
     "docker:build": "docker build -t wisdom-backend .",
-    "docker:start": "docker run -p 3000:3000 wisdom-backend",
+    "docker:start:bash": "sh -c 'docker run -p 3000:3000 -v \"$(pwd):/app\" -v /app/node_modules wisdom-backend'",
+    "docker:start:powershell": "powershell -Command \"docker run -p 3000:3000 -v ${PWD}:/app -v /app/node_modules wisdom-backend\"",
     "migrate:up": "npx sequelize-cli db:migrate",
     "migrate:undo": "npx sequelize-cli db:migrate:undo",
     "migrate:undo:all": "npx sequelize db:migrate:undo:all",
@@ -36,7 +37,6 @@
   "bin": {
     "the-wisdom-api": "bin/index.js"
   },
-  "devDependencies": {},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/jujunsetiawan/the-wisdom-backend.git"
@@ -47,5 +47,8 @@
   "bugs": {
     "url": "https://github.com/jujunsetiawan/the-wisdom-backend/issues"
   },
-  "homepage": "https://github.com/jujunsetiawan/the-wisdom-backend#readme"
+  "homepage": "https://github.com/jujunsetiawan/the-wisdom-backend#readme",
+  "devDependencies": {
+    "nodemon": "^3.1.10"
+  }
 }
