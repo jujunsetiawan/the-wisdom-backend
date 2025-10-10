@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: kubernetes-wisdom-api-service
+  labels:
+    app: kubernetes-wisdom-api
+spec:
+  selector:
+    app: kubernetes-wisdom-api
+  type: NodePort
+  ports:
+    - protocol: TCP
+      port:  3000
+      targetPort:  3000
