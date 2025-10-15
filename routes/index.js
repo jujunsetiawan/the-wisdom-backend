@@ -1,15 +1,17 @@
 var express = require('express');
 var router = express.Router();
 
-router.get('/', (req, res, next) => {
+router.get('/api', (req, res, next) => {
   res.status(200).json({
-    status: "success", 
-    message: "Welcome to The Wisdom API", 
-    name: "The_Wisdom_API", 
-    version: "0.0.1", 
-    docs_link: "https://documenter.getpostman.com/view/14970426/2sB3QFQXp2", 
+    status: "success",
+    message: "Welcome to The Wisdom API",
+    name: "The_Wisdom_API",
+    version: "0.0.1",
+    docs_link: "https://documenter.getpostman.com/view/14970426/2sB3QFQXp2",
     health_check: 100,
-    is_open: true
+    uptime: process.uptime(),
+    is_open: true,
+    timestamp: new Date().toISOString()
   });
 });
 
